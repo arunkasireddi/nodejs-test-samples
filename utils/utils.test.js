@@ -2,36 +2,40 @@ const expect = require('expect');
 
 const utils = require('./utils');
 
+describe('Utils', () => {
+    describe('#add', () => {
+        it('should add two numbers', () => {
+            var res = utils.add(33, 11);
+            expect(res).toBe(44).toBeA('number');
+        });
 
-it('should add two numbers', () => {
-    var res = utils.add(33, 11);
-    expect(res).toBe(44).toBeA('number');
-});
-
-it('should async add two numbers', (done) => {
-    utils.asyncAdd(4, 3, (sum) => {
-        expect(sum).toBe(7).toBeA('number');
-        done();
+        it('should async add two numbers', (done) => {
+            utils.asyncAdd(4, 3, (sum) => {
+                expect(sum).toBe(7).toBeA('number');
+                done();
+            });
+        });
     });
-});
+    describe('#square', () => {
+        it('should square a number', () => {
+            var res = utils.square(4);
+            expect(res).toBe(16).toBeA('number');
+        });
 
-it('should square a number', () => {
-    var res = utils.square(4);
-    expect(res).toBe(16).toBeA('number');
-});
-
-it('should async square a number', (done) => {
-    utils.asyncSquare(4, (square) => {
-        expect(square).toBe(16).toBeA('number');
-        done();
+        it('should async square a number', (done) => {
+            utils.asyncSquare(4, (square) => {
+                expect(square).toBe(16).toBeA('number');
+                done();
+            });
+        });
     });
-});
-
-it('should subtract two numbers', () => {
-    var res = utils.subtract(12, 10);
-    if (res !== 2) {
-        throw new Error(`Expected 2, but got ${res}`);
-    }
+    
+    it('should subtract two numbers', () => {
+        var res = utils.subtract(12, 10);
+        if (res !== 2) {
+            throw new Error(`Expected 2, but got ${res}`);
+        }
+    });
 });
 
 it('should verify first and last names are set', () => {
